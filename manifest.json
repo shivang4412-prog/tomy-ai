@@ -1,0 +1,10 @@
+{
+  "name": "TOMY AI",
+  "short_name": "TOMY",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071426",
+  "theme_color": "#071426",
+  "description": "My Personal AI Assistant"
+}
