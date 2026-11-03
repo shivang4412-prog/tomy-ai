@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOMY AI</title>
+<style>
+body {
+  margin: 0;
+  background: #07111f;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header {
+  text-align: center;
+  padding: 22px;
+  background: #10243d;
+  color: #4deaff;
+  font-size: 27px;
+  font-weight: bold;
+}
+#chat {
+  padding: 15px;
+  height: 65vh;
+  overflow-y: auto;
+}
+.msg {
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 12px;
+  max-width: 85%;
+  line-height: 1.5;
+}
+.bot { background: #183653; }
+.user {
+  background: #075b83;
+  margin-left: auto;
+}
+footer {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+}
+button {
+  background: #00bce8;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>🤖 TOMY AI</header>
+
+<div id="chat">
+  <div class="msg bot">
+    नमस्ते! मैं TOMY हूँ। तुम्हारा AI Assistant।
+    बताओ, मैं तुम्हारी क्या मदद करूँ?
+  </div>
+</div>
+
+<footer>
+  <input id="question" placeholder="TOMY से पूछो...">
+  <button onclick="send()">Send</button>
+</footer>
+
+<script>
+function send() {
+  let input = document.getElementById("question");
+  let chat = document.getElementById("chat");
+  let q = input.value.trim();
+
+  if (!q) return;
+
+  chat.innerHTML +=
+    `<div class="msg user">${escapeHTML(q)}</div>`;
+
+  let answer = "मैं TOMY हूँ। अभी मेरा AI Brain तैयार हो रहा है।";
+
+  if (q.toLowerCase().includes("hello") ||
+      q.includes("नमस्ते")) {
+    answer = "नमस्ते! मैं TOMY हूँ। कैसे मदद करूँ?";
+  } else if (q.includes("नाम")) {
+    answer = "मेरा नाम TOMY है!";
+  } else if (q.includes("पढ़ाई")) {
+    answer = "चलो आज मेहनत से पढ़ाई करते हैं!";
+  } else if (q.includes("समय")) {
+    answer = "अभी तुम्हारे मोबाइल में समय देख सकते हो।";
+  }
+
+  chat.innerHTML +=
+    `<div class="msg bot">${answer}</div>`;
+
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+
+document.getElementById("question")
+.addEventListener("keydown", e => {
+  if (e.key === "Enter") send();
+});
+</script>
+
+</body>
+                                 </html>
+                                 
